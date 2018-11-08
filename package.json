@@ -1,0 +1,64 @@
+{
+  "name": "todo-react",
+  "version": "0.0.1",
+  "description": "Todo app implemented in pure React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ext js --ext jsx --ignore-path .gitignore ."
+  },
+  "keywords": [
+    "react"
+  ],
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.5.1"
+  },
+  "author": "Nataliya Dubrovska",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "plugins": [
+      "jest"
+    ],
+    "env": {
+      "jest/globals": true
+    }
+  },
+  "jest": {
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node",
+    "setupTestFrameworkScriptFile": "./configuration/enzyme.js",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "jest-transform-css"
+    }
+  },
+  "devDependencies": {
+    "acorn": "^6.0.4",
+    "babel": "^6.23.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "parcel-bundler": "^1.10.3"
+  },
+  "dependencies": {
+    "react": "^16.6.1"
+  }
+}
