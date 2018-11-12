@@ -4,11 +4,19 @@ import Todo from '.';
 
 describe('Todo', () => {
   const text = 'Destroy half of the universe';
+  const mockFunctions = {
+    onClick: () => {}
+  };
 
-  let todo;
+  let todo, onClickSpy;
 
   beforeEach(() => {
-    todo = shallow(<Todo text={text} />);
+    onClickSpy = jest.spyOn(mockFunctions, 'onClick');
+    todo = shallow(<Todo text={text} onClick={onClickSpy}/>);
+  });
+
+  afterEach(() => {
+    onClickSpy.mockRestore();
   });
 
   test('should render text supplied', () => {
@@ -25,5 +33,11 @@ describe('Todo', () => {
     });
 
     expect(todo.prop('className')).toContain('todo--completed');
+  });
+
+  test('should call onClick function when clicked', () => {
+    todo.simulate('click');
+
+    expect(onClickSpy).toBeCalled();
   });
 });

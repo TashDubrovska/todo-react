@@ -4,6 +4,7 @@ import TodoList from '../todoList';
 import Filter from '../filter';
 import filterTodos from './filterTodos';
 import addTodo from './addTodo';
+import toggleTodo from './toggleTodo';
 
 export default class TodoApp extends React.Component {
   constructor() {
@@ -23,6 +24,7 @@ export default class TodoApp extends React.Component {
 
     this.addTodoHandler = this.addTodoHandler.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
+    this.toggleTodoHandler = this.toggleTodoHandler.bind(this);
   }
 
   addTodoHandler(text) {
@@ -37,12 +39,20 @@ export default class TodoApp extends React.Component {
     this.setState(state => filterTodos(state.todos, filter));
   }
 
+  toggleTodoHandler(index) {
+    this.setState(state => {
+      const todos = toggleTodo(state.todos, index);
+
+      return Object.assign({}, { todos }, filterTodos(state.todos, state.filter));
+    });
+  }
+
   render() {
     return (
       <div>
         <AddTodo onSubmit={this.addTodoHandler} />
         <Filter onClick={this.filterHandler} />
-        <TodoList todos={this.state.visibleTodos} />
+        <TodoList todos={this.state.visibleTodos} onClick={this.toggleTodoHandler} />
       </div>
     );
   }
