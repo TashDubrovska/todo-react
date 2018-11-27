@@ -21,4 +21,16 @@ describe('addTodo', () => {
   test('should not add a new todo if text string is empty', () => {
     expect(addTodo(todos, '')).toEqual(todos);
   });
+
+  test('should not add a new todo if text is undefined', () => {
+    expect(addTodo(todos)).toEqual(todos);
+  });
+
+  test('should not add a new todo if text is undefined', () => {
+    expect(addTodo(todos, undefined)).toEqual(todos);
+  });
+
+  test('should not add a new todo if text is null', () => {
+    expect(addTodo(todos, null)).toEqual(todos);
+  });
 });
